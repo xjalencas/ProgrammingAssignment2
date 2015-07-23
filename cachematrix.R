@@ -11,18 +11,25 @@
 ## is created.
 
 makeCacheMatrix <- function(x = matrix()) {
-  
+
+    # Initialize inverse
     inv <- NULL
 
+    # Set the matrix to a new value and inverse to NULL
+    # Deep assignemnt modifies the values in the execution environment of makeCacheMatrix, 
+    # which is stored as the enclosing of the function.
     set <- function(y) {
       x <<- y
       inv <<- NULL
     }
   
+    # Get the matrix
     get <- function() x
     
+    # Set the inverse
     setInverse <- function(inverse)inv <<- inverse
     
+    # Get the inverse
     getInverse <- function() inv
     
     # Build list 
@@ -37,6 +44,7 @@ cacheSolve <- function(x, ...) {
 
   ## Return a matrix that is the inverse of 'x'
   
+  # Get the inverse matrix
   inv <- x$getInverse()
   
   ## Check if inverse is already cached
